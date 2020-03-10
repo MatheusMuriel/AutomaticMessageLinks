@@ -2,3 +2,17 @@
     display: flex;
     flex-direction: column;
 }
+
+.div_batch {
+    margin: 10%;
+    position: relative;
+    border: solid #f8f9fa;
+    padding: 1.5rem;
+    border-width: .2rem;
+}
+
+.form_batch {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

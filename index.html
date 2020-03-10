@@ -18,8 +18,25 @@
   </head>
   <body>
     <div id="app" class="main_container">
-            
+        <h1>{{message}}</h1>
+        <div class="div_batch">
+            <form class="form_batch" @submit="generateBatch" action="#">
+                <div class="form-group">
+                    <label for="messageTextArea">Message</label>
+                    <textarea class="form-control" id="messageTextArea"></textarea>
+                </div>
+                <div class="form-group"> 
+                    <label for="listNumbersTextArea">List of numbers (separated for coma)</label>
+                    <textarea class="form-control" id="listNumbersTextArea"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Generate</button>
+            </form>
+        </div>
 
+        <div class="div_batch">
+            <ul class="list-group">
+            </ul>
+        </div>
     </div>
 
     <script src="js/script.js" charset="utf-8"></script>
