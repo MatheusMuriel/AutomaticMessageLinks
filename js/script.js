@@ -19,19 +19,15 @@ var app = new Vue({
         let urlPhone = `phone=${this.formatNumber(_number)}`;
         let urlMessage = `text=${this.formatMessage(_message)}`;
 
-        console.log(urlMessage);
-
         let _link = `${prefix}?${urlPhone}&${urlMessage}`;
 
-        console.log(_link);
-
-        this.messageLinks.push({ number: _number, link: _link });
+        this.messageLinks.push({ number: _number, link: _link, clicked: false});
     },
     linkClick: function(_link) {
-        window.open(_link.link)
+      let index = this.messageLinks.indexOf(_link);
+      this.messageLinks[index].clicked = true;
 
-        let index = this.messageLinks.indexOf(_link);
-        this.messageLinks[index].clicked = true;
+      window.open(_link.link) 
     },
     formatNumber: function(numberOriginal) {
         // CodCountry+DDD+Number
