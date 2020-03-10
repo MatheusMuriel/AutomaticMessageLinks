@@ -1,39 +1,47 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
-    messageLinks: [
-        {number: 123, link: "#1", clicked: false},
-        {number: 124, link: "#2", clicked: true},
-        {number: 125, link: "#3", clicked: false},
-        {number: 126, link: "#4", clicked: false}
-    ]
+    message: '',
+    listNumbers: '',
+    messageLinks: []
   },
   methods: {
     generateBatch: function(e) {
-        this.message = "Yeah!";
+      let listNums = this.listNumbers.split(',');
+
+      listNums.forEach( o => { this.createLink(o, this.message) });
+
     },
     createLink: function(_number, _message) {
         // https://api.whatsapp.com/send?phone=SeuNúmero&text=SuaMensagem
         let prefix = "https://api.whatsapp.com/send";
         
-        let urlPhone = `phone=${formatNumber(_number)}`;
-        let urlMessage = `text=${formatMessage(_message)}`;
+        let urlPhone = `phone=${this.formatNumber(_number)}`;
+        let urlMessage = `text=${this.formatMessage(_message)}`;
+
+        console.log(urlMessage);
 
         let _link = `${prefix}?${urlPhone}&${urlMessage}`;
 
+        console.log(_link);
+
         this.messageLinks.push({ number: _number, link: _link });
     },
-    setClicked: function(_link) {
+    linkClick: function(_link) {
+        window.open(_link.link)
+
         let index = this.messageLinks.indexOf(_link);
         this.messageLinks[index].clicked = true;
     },
     formatNumber: function(numberOriginal) {
         // CodCountry+DDD+Number
+        return numberOriginal;
     },
     formatMessage: function(messageOriginal) {
         // Space = %20
+      let newMessage = messageOriginal.split(/\s/).join("\%20");
 
+      return newMessage;
     }
   }
 })
