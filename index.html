@@ -4,12 +4,12 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Automatic Message</title>
+    <title>Mensagens Automaticas</title>
 
     <!-- Development -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- Production
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <!-- Production -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,22 +21,22 @@
         <div class="div_batch">
             <form class="form_batch" @submit="generateBatch" action="#">
                 <div class="form-group">
-                    <label for="messageTextArea">Message</label>
+                    <label for="messageTextArea">Mensagem</label>
                     <textarea class="form-control" id="messageTextArea" v-model="message"></textarea>
                 </div>
                 <div class="form-group"> 
-                    <label for="listNumbersTextArea">List of numbers (separated for coma)</label>
+                    <label for="listNumbersTextArea">Lista de numeros com DDD separados por virgula (ex: 11222222222,33444444444)</label>
                     <textarea class="form-control" id="listNumbersTextArea" v-model="listNumbers"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Generate</button>
+                <button type="submit" class="btn btn-primary">Gerar</button>
             </form>
         </div>
 
         <div class="list-group list-links">
             <a v-for="_link in messageLinks" @click="linkClick(_link)"
                 class="list-group-item list-group-item-action">
-                    <span v-if="_link.clicked" class="badge badge-success">Clicked</span>
-                    <span v-else class="badge badge-warning">Not Clicked</span>
+                    <span v-if="_link.clicked" class="badge badge-success">Clicado</span>
+                    <span v-else class="badge badge-warning">Não clicado</span>
                      {{_link.number}}
             </a>
         </div>

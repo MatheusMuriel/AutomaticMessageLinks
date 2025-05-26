@@ -4,7 +4,10 @@
 }
 
 .div_batch {
-    margin: 10%;
+    margin-top: 10%;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 0%;
     position: relative;
     border: solid #f8f9fa;
     padding: 1.5rem;
