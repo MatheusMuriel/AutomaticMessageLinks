@@ -42,10 +42,24 @@ var app = new Vue({
       return cleaned_string;
     },
     formatMessage: function(messageOriginal) {
-      // Space = %20
-      let newMessage = messageOriginal.split(/\s/).join("\%20");
+      if (!messageOriginal || typeof messageOriginal !== 'string') return '';
 
-      return newMessage;
+      const transformations = [
+        // Substitui quebras de linha por %0A
+        msg => msg.replace(/\r?\n/g, "%0A"),
+        // Remove espaços duplos e trim final
+        //msg => msg.trim(),
+        // Substitui espaços por %20
+        msg => msg.replace(/\s/g, "%20"),
+        // Escapa & (importante para query string)
+        msg => msg.replace(/&/g, "%26"),
+        // Escapa # (importante em links)
+        msg => msg.replace(/#/g, "%23"),
+        // (Opcional) Remove emojis ou símbolos especiais (pode comentar essa linha se quiser permitir)
+        // msg => msg.replace(/[\u{1F600}-\u{1F6FF}]/gu, '')
+      ];
+
+      return transformations.reduce((msg, fn) => fn(msg), messageOriginal);
     }
   }
 })

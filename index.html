@@ -19,7 +19,7 @@
   <body>
     <div id="app" class="main_container">
         <div class="div_batch">
-            <form class="form_batch" @submit="generateBatch" action="#">
+            <form class="form_batch" @submit.prevent="generateBatch" action="#">
                 <div class="form-group">
                     <label for="messageTextArea">Mensagem</label>
                     <textarea class="form-control" id="messageTextArea" v-model="message"></textarea>
